@@ -9,7 +9,7 @@ $ git clone https://github.com/myothantdev/laravel-9-jwt.git
 $ cd laravel-9-jwt/src && composer install
 $ php artisan migrate
 $ php artisan db:seed
-$ php artisan server
+$ php artisan serve
 ```
 
 ## API endpoints Doc
