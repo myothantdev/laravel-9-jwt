@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "1eac805c-2d56-44f6-b29d-8b038ed6ee66",
+		"name": "laravel-9-jwt",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "[CREATE] Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Order2",
+									"type": "text"
+								},
+								{
+									"key": "item_id",
+									"value": "8f7d06fc-fdfd-40dc-a310-e7e9da347097",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{path}}/api/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "[CREATE] Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Order 001",
+									"type": "text"
+								},
+								{
+									"key": "item_id",
+									"value": "8f7d06fc-fdfd-40dc-a310-e7e9da347097",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": "{{path}}/api/orders/08ca9a91-b964-47a3-b82b-098c50243b62"
+					},
+					"response": []
+				},
+				{
+					"name": "[GET] Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{path}}/api/orders"
+					},
+					"response": []
+				},
+				{
+					"name": "[DETAIL] Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{path}}/api/orders/08ca9a91-b964-47a3-b82b-098c50243b62"
+					},
+					"response": []
+				},
+				{
+					"name": "[DELETE] Orders",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{path}}/api/orders/08ca9a91-b964-47a3-b82b-098c50243b62"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "[GET] Me",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{token}}"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{path}}/api/auth/me"
+					},
+					"response": []
+				},
+				{
+					"name": "[POST] Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"    var data = pm.response.json();",
+									"    if (data) {",
+									"        pm.environment.get(\"variable_key\");",
+									"        pm.globals.set(\"token\", data.access_token);",
+									"        pm.environment.set(\"token\", data.access_token);",
+									"    }",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "kyawgyee1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456Aa",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{path}}/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "[POST] Register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Myo Thant Kyaw",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "kyawgyee1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "kyawgyee1@mail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456Aa",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123456Aa",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{path}}/api/auth/register"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "[GET] Categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{path}}/api/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "[GET] Items",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": "{{path}}/api/categories/3e47dbed-d23b-40fb-a952-3e73005df07a/items"
+			},
+			"response": []
+		}
+	]
+}
